@@ -120,6 +120,7 @@
                     </execution>
                 </executions>
                 <configuration>
+                    <additionalparam>-encoding UTF-8 -charset UTF-8</additionalparam>
                     <failOnError>false</failOnError>
                 </configuration>
             </plugin>
