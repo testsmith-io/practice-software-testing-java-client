@@ -28,9 +28,17 @@ jobs:
           echo "pinentry-mode loopback" >> ~/.gnupg/gpg.conf
           gpg --list-secret-keys --keyid-format LONG
         shell: bash
-
       - name: Build and Deploy All Clients
-        run: mvn clean deploy -P release -Dgpg.passphrase=${{ secrets.MAVEN_GPG_PASSPHRASE }}
-        env:
-          MAVEN_USERNAME: ${{ secrets.OSSRH_USERNAME }}
-          MAVEN_PASSWORD: ${{ secrets.OSSRH_PASSWORD }}
+        run: mvn release:clean release:prepare
+      - name: Release
+        uses: qcastel/github-actions-maven-release@master
+        with:
+          release-branch-name: "main"
+          gpg-enabled: "true"
+          gpg-key-id: ${{ secrets.GITHUB_GPG_KEY_ID }}
+          gpg-key: ${{ secrets.GITHUB_GPG_KEY }}
+
+          git-release-bot-name: "release-bot"
+          git-release-bot-email: "release-bot@example.com"
+
+          access-token: ${{ secrets.GITHUB_ACCESS_TOKEN }}
