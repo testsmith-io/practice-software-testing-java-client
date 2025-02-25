@@ -23,6 +23,8 @@ jobs:
           server-password: MAVEN_PASSWORD
           gpg-private-key: ${{ secrets.GPG_PRIVATE_KEY }}
           gpg-passphrase: MAVEN_GPG_PASSPHRASE
+      - name: Clean install
+        run: mvn clean install
       - name: Prepare release
         run: mvn release:clean release:prepare --batch-mode
       - name: Publish package
