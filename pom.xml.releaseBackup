@@ -1,10 +1,9 @@
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>io.testsmith.practicesoftwaretesting</groupId>
     <artifactId>api-client</artifactId>
-    <version>0.0.4-SNAPSHOT</version>
+    <version>0.0.5-SNAPSHOT</version>
     <packaging>pom</packaging>
 
     <properties>
@@ -29,6 +28,17 @@
         <url>https://github.com/testsmith-io/practice-software-testing-java-client</url>
         <tag>HEAD</tag>
     </scm>
+
+    <name>practice-software-testing-java-client</name>
+    <description>OpenAPITools openapi-generator generated Java client for PracticeSoftwareTesing.com</description>
+    <url>https://github.com/testsmith-io/practice-software-testing-java-client</url>
+
+    <licenses>
+        <license>
+            <name>The GNU General Public License 3.0</name>
+            <url>https://www.gnu.org/licenses/gpl-3.0.html</url>
+        </license>
+    </licenses>
 
     <developers>
         <developer>
