@@ -29,6 +29,17 @@
         <tag>HEAD</tag>
     </scm>
 
+    <name>practice-software-testing-java-client</name>
+    <description>OpenAPITools openapi-generator generated Java client for PracticeSoftwareTesing.com</description>
+    <url>https://github.com/testsmith-io/practice-software-testing-java-client</url>
+
+    <licenses>
+        <license>
+            <name>The GNU General Public License 3.0</name>
+            <url>https://www.gnu.org/licenses/gpl-3.0.html</url>
+        </license>
+    </licenses>
+
     <developers>
         <developer>
             <name>Roy de Kleijn</name>
