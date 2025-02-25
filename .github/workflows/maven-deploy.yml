@@ -1,9 +1,6 @@
 name: Deploy All API Clients to Maven Central
 
 on:
-  push:
-    branches:
-      - main
   release:
     types: [published]
 
