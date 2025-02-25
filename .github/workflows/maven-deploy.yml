@@ -20,6 +20,14 @@ jobs:
         with:
           distribution: 'temurin'
           java-version: '17'
+      - name: Import GPG Key
+        run: |
+          echo "${{ secrets.GPG_PRIVATE_KEY }}" | base64 --decode | gpg --batch --import
+          mkdir -p ~/.gnupg
+          echo "use-agent" >> ~/.gnupg/gpg.conf
+          echo "pinentry-mode loopback" >> ~/.gnupg/gpg.conf
+          gpg --list-secret-keys --keyid-format LONG
+        shell: bash
 
       - name: Build and Deploy All Clients
         run: mvn clean deploy -P release -Dgpg.passphrase=${{ secrets.MAVEN_GPG_PASSPHRASE }}
