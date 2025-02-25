@@ -22,6 +22,12 @@
         <nexus-staging-maven-plugin.version>1.6.13</nexus-staging-maven-plugin.version>
     </properties>
 
+    <scm>
+        <connection>scm:git:git@github.com:testsmith-io/practice-software-testing-java-client.git</connection>
+        <developerConnection>scm:git:git@github.com:testsmith-io/practice-software-testing-java-client.git</developerConnection>
+        <url>https://github.com/testsmith-io/practice-software-testing-java-client</url>
+    </scm>
+
     <developers>
         <developer>
             <name>Roy de Kleijn</name>
