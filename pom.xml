@@ -1,6 +1,5 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
-
     <groupId>io.testsmith.practicesoftwaretesting</groupId>
     <artifactId>api-client</artifactId>
     <version>0.0.12-SNAPSHOT</version>
@@ -28,7 +27,7 @@
         <developerConnection>scm:git:git@github.com:testsmith-io/practice-software-testing-java-client.git
         </developerConnection>
         <url>https://github.com/testsmith-io/practice-software-testing-java-client</url>
-        <tag>api-client-0.0.10</tag>
+        <tag>api-client-0.0.1</tag>
     </scm>
 
     <name>practice-software-testing-java-client</name>
