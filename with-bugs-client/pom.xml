@@ -8,7 +8,7 @@
     </parent>
 
     <artifactId>with-bugs-client</artifactId>
-    <version>0.0.10</version>
+    <version>0.0.12-SNAPSHOT</version>
     <packaging>jar</packaging>
 
     <dependencies>
