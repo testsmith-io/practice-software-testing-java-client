@@ -108,9 +108,9 @@
                             <generatorName>java</generatorName>
                             <configOptions>
                                 <dateLibrary>java8</dateLibrary>
-                                <library>okhttp-gson</library>
+                                <library>rest-assured</library>
                                 <hideGenerationTimestamp>true</hideGenerationTimestamp>
-                                <serializationLibrary>gson</serializationLibrary>
+                                <serializationLibrary>jackson</serializationLibrary>
                             </configOptions>
                             <!-- set locations of files -->
                             <apiPackage>com.practicesoftwaretesting.client.api</apiPackage>
