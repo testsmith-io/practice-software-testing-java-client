@@ -123,9 +123,9 @@
                                 <serializationLibrary>jackson</serializationLibrary>
                             </configOptions>
                             <!-- set locations of files -->
-                            <apiPackage>com.practicesoftwaretesting.client.api</apiPackage>
-                            <modelPackage>com.practicesoftwaretesting.client.model</modelPackage>
-                            <invokerPackage>com.practicesoftwaretesting.client</invokerPackage>
+                            <apiPackage>com.practicesoftwaretesting.client.with_bugs.api</apiPackage>
+                            <modelPackage>com.practicesoftwaretesting.client.with_bugs.model</modelPackage>
+                            <invokerPackage>com.practicesoftwaretesting.client.with_bugs</invokerPackage>
 
                             <!-- set properties in generated pom file -->
                             <groupId>com.practicesoftwaretesting</groupId>
