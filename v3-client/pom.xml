@@ -118,6 +118,7 @@
                             <!--                            <inputSpec>${project.basedir}/src/test/resources/api-docs.json</inputSpec>-->
                             <generatorName>java</generatorName>
                             <configOptions>
+                                <useOneOfInterfaces>true</useOneOfInterfaces>
                                 <dateLibrary>java8</dateLibrary>
                                 <library>rest-assured</library>
                                 <hideGenerationTimestamp>true</hideGenerationTimestamp>
