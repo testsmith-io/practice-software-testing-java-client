@@ -122,7 +122,7 @@
                                 <dateLibrary>java8</dateLibrary>
                                 <library>rest-assured</library>
                                 <hideGenerationTimestamp>true</hideGenerationTimestamp>
-                                <serializationLibrary>jackson</serializationLibrary>
+                                <serializationLibrary>gson</serializationLibrary>
                             </configOptions>
                             <!-- set locations of files -->
                             <apiPackage>com.practicesoftwaretesting.client.v3.api</apiPackage>
