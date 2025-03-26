@@ -100,7 +100,7 @@
                             <configOptions>
                                 <useOneOfInterfaces>true</useOneOfInterfaces>
                                 <dateLibrary>java8</dateLibrary>
-                                <library>okhttp-gson</library>
+                                <library>rest-assured</library>
                                 <hideGenerationTimestamp>true</hideGenerationTimestamp>
                                 <serializationLibrary>gson</serializationLibrary>
                             </configOptions>
