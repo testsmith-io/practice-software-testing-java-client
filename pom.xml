@@ -3,7 +3,7 @@
 
     <groupId>io.testsmith.practicesoftwaretesting</groupId>
     <artifactId>api-client</artifactId>
-    <version>0.0.62-SNAPSHOT</version>
+    <version>0.0.62</version>
     <packaging>pom</packaging>
 
     <properties>
@@ -28,7 +28,7 @@
         <developerConnection>scm:git:git@github.com:testsmith-io/practice-software-testing-java-client.git
         </developerConnection>
         <url>https://github.com/testsmith-io/practice-software-testing-java-client</url>
-        <tag>api-client-0.0.10</tag>
+        <tag>v0.0.62</tag>
     </scm>
 
     <name>practice-software-testing-java-client</name>
