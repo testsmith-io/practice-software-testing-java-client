@@ -7,32 +7,44 @@ jobs:
   deploy:
     runs-on: ubuntu-latest
 
+    permissions:
+      contents: write
+
     steps:
       - uses: actions/checkout@v4
+
+      # maven-release-plugin pushes tags/branches via SSH
       - uses: webfactory/ssh-agent@v0.8.0
         with:
           ssh-private-key: ${{ secrets.SSH_PRIVATE_KEY }}
+
       - name: Set up Git User
         run: |
           git config --global user.email "dekleijn.roy@gmail.com"
           git config --global user.name "roydekleijn"
-      - name: Set up Maven Central Repository
+
+      - name: Set up Java + Central credentials + GPG
         uses: actions/setup-java@v4
         with:
           java-version: '17'
           distribution: 'zulu'
-          server-id: ossrh
-          server-username: MAVEN_USERNAME
-          server-password: MAVEN_PASSWORD
+          server-id: central
+          server-username: CENTRAL_TOKEN_USERNAME
+          server-password: CENTRAL_TOKEN_PASSWORD
           gpg-private-key: ${{ secrets.GPG_PRIVATE_KEY }}
           gpg-passphrase: MAVEN_GPG_PASSPHRASE
-      - name: Clean install
-        run: mvn clean deploy
+          
+      - run: java -version && mvn -v
+
+      - name: Clean install + deploy
+        run: mvn -B -Prelease clean deploy
+
       - name: Prepare release
-        run: mvn release:clean release:prepare --batch-mode
-      - name: Publish package
-        run: mvn release:perform --batch-mode
+        run: mvn -B release:clean release:prepare
+
+      - name: Perform release (deploy)
+        run: mvn -B release:perform
         env:
-          MAVEN_USERNAME: ${{ secrets.OSSRH_USERNAME }}
-          MAVEN_PASSWORD: ${{ secrets.OSSRH_PASSWORD }}
+          CENTRAL_TOKEN_USERNAME: ${{ secrets.CENTRAL_TOKEN_USERNAME }}
+          CENTRAL_TOKEN_PASSWORD: ${{ secrets.CENTRAL_TOKEN_PASSWORD }}
           MAVEN_GPG_PASSPHRASE: ${{ secrets.MAVEN_GPG_PASSPHRASE }}
