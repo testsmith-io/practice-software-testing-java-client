@@ -149,10 +149,8 @@
         <extensions>true</extensions>
         <configuration>
           <publishingServerId>central</publishingServerId>
-          <!-- For CI/CD, you might want to enable these:
           <autoPublish>true</autoPublish>
           <waitUntil>published</waitUntil>
-          -->
         </configuration>
       </plugin>
     </plugins>
