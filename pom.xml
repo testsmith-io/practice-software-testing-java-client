@@ -19,7 +19,7 @@
 
     <!-- plugin versions -->
     <maven-compiler-plugin.version>3.8.1</maven-compiler-plugin.version>
-    <maven-gpg-plugin.version>1.6</maven-gpg-plugin.version>
+    <maven-gpg-plugin.version>3.0.1</maven-gpg-plugin.version>
     <maven-javadoc-plugin.version>3.2.0</maven-javadoc-plugin.version>
     <maven-resources-plugin.version>3.2.0</maven-resources-plugin.version>
     <maven-release-plugin.version>2.5.3</maven-release-plugin.version>
@@ -103,7 +103,6 @@
           <artifactId>maven-release-plugin</artifactId>
           <version>${maven-release-plugin.version}</version>
         </plugin>
-        <!-- REMOVED: org.sonatype.plugins:nexus-staging-maven-plugin -->
       </plugins>
     </pluginManagement>
 
@@ -144,29 +143,17 @@
         </configuration>
       </plugin>
 
-      <plugin>
-                        <groupId>org.apache.maven.plugins</groupId>
-                        <artifactId>maven-gpg-plugin</artifactId>
-                        <executions>
-                            <execution>
-                                <id>sign-artifacts</id>
-                                <phase>verify</phase>
-                                <goals>
-                                    <goal>sign</goal>
-                                </goals>
-                            </execution>
-                        </executions>
-                    </plugin>
-      <!-- NEW: Sonatype Central Publishing -->
+      <!-- REMOVED: maven-gpg-plugin from here - it's only in the release profile now -->
+      
+      <!-- Sonatype Central Publishing -->
       <plugin>
         <groupId>org.sonatype.central</groupId>
         <artifactId>central-publishing-maven-plugin</artifactId>
         <version>${central-publishing-maven-plugin.version}</version>
         <extensions>true</extensions>
         <configuration>
-          <!-- Must match <server><id> in your ~/.m2/settings.xml -->
           <publishingServerId>central</publishingServerId>
-          <!-- For fully non-interactive CI, uncomment the next two:
+          <!-- For CI/CD, you might want to enable these:
           <autoPublish>true</autoPublish>
           <waitUntil>published</waitUntil>
           -->
@@ -196,6 +183,7 @@
           <plugin>
             <groupId>org.apache.maven.plugins</groupId>
             <artifactId>maven-gpg-plugin</artifactId>
+            <version>${maven-gpg-plugin.version}</version>
             <executions>
               <execution>
                 <id>sign-artifacts</id>
@@ -203,6 +191,13 @@
                 <goals>
                   <goal>sign</goal>
                 </goals>
+                <configuration>
+                  <!-- Use gpg2 explicitly -->
+                  <gpgArguments>
+                    <arg>--pinentry-mode</arg>
+                    <arg>loopback</arg>
+                  </gpgArguments>
+                </configuration>
               </execution>
             </executions>
           </plugin>
