@@ -1,28 +1,32 @@
 name: Deploy All API Clients to Maven Central
-
 on:
   workflow_dispatch:
 
 jobs:
   deploy:
     runs-on: ubuntu-latest
-
     permissions:
       contents: write
-
+    
+    # Set environment variables for entire job
+    env:
+      CENTRAL_TOKEN_USERNAME: ${{ secrets.CENTRAL_TOKEN_USERNAME }}
+      CENTRAL_TOKEN_PASSWORD: ${{ secrets.CENTRAL_TOKEN_PASSWORD }}
+      MAVEN_GPG_PASSPHRASE: ${{ secrets.MAVEN_GPG_PASSPHRASE }}
+    
     steps:
       - uses: actions/checkout@v4
-
-      # maven-release-plugin pushes tags/branches via SSH
+      
+      # SSH setup for maven-release-plugin to push tags/branches
       - uses: webfactory/ssh-agent@v0.8.0
         with:
           ssh-private-key: ${{ secrets.SSH_PRIVATE_KEY }}
-
+      
       - name: Set up Git User
         run: |
           git config --global user.email "dekleijn.roy@gmail.com"
           git config --global user.name "roydekleijn"
-
+      
       - name: Set up Java + Central credentials + GPG
         uses: actions/setup-java@v4
         with:
@@ -33,18 +37,21 @@ jobs:
           server-password: CENTRAL_TOKEN_PASSWORD
           gpg-private-key: ${{ secrets.GPG_PRIVATE_KEY }}
           gpg-passphrase: MAVEN_GPG_PASSPHRASE
-          
-      - run: java -version && mvn -v
-
-      - name: Clean install + deploy
-        run: mvn -B -Prelease clean deploy
-
-      - name: Prepare release
-        run: mvn -B release:clean release:prepare
-
-      - name: Perform release (deploy)
-        run: mvn -B release:perform
-        env:
-          CENTRAL_TOKEN_USERNAME: ${{ secrets.CENTRAL_TOKEN_USERNAME }}
-          CENTRAL_TOKEN_PASSWORD: ${{ secrets.CENTRAL_TOKEN_PASSWORD }}
-          MAVEN_GPG_PASSPHRASE: ${{ secrets.MAVEN_GPG_PASSPHRASE }}
+      
+      - name: Verify Environment
+        run: |
+          java -version
+          mvn -v
+          gpg --version
+      
+      # Build and test without deployment first (no signing needed)
+      - name: Build and Test
+        run: mvn -B clean install -DskipTests
+      
+      # Prepare the release (updates versions, creates tags)
+      - name: Prepare Release
+        run: mvn -B release:clean release:prepare -DskipTests
+      
+      # Perform the release (builds from tag and deploys to Maven Central)
+      - name: Perform Release
+        run: mvn -B release:perform -DskipTests
