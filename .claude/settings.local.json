@@ -1,0 +1,35 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(find /Users/roy/tmp/practice-software-testing-java-client/target -name \"central-bundle.zip\" -exec ls -lh {} ;)",
+      "Read(//Users/roy/.m2/**)",
+      "Bash(mvn release:clean)",
+      "Bash(mvn release:prepare --batch-mode)",
+      "Bash(git add pom.xml v1-client/pom.xml v2-client/pom.xml v3-client/pom.xml v4-client/pom.xml v5-client/pom.xml with-bugs-client/pom.xml)",
+      "Bash(git commit -m \"$(cat <<''EOF''\nSwitch from central-publishing-maven-plugin to nexus-staging-maven-plugin\n\n- Replace central-publishing-maven-plugin with nexus-staging-maven-plugin\n- Update distribution management URLs to use OSSRH\n- Explicitly disable central-publishing-maven-plugin to prevent auto-injection\n- Configure nexus-staging to auto-release after close\n- Enable maven.deploy.skip=false in all child modules\n\nThis allows each module to be deployed as a separate artifact instead of\nbundling all modules into a single deployment.\n\n🤖 Generated with [Claude Code](https://claude.com/claude-code)\n\nCo-Authored-By: Claude <noreply@anthropic.com>\nEOF\n)\")",
+      "Bash(mvn release:rollback)",
+      "Bash(mvn versions:set -DnewVersion=0.0.65)",
+      "Bash(mvn versions:commit)",
+      "Bash(mvn clean deploy -pl v1-client -Prelease --batch-mode)",
+      "Bash(cat ~/.m2/settings.xml)",
+      "Bash(mvn deploy -pl v1-client -Prelease --batch-mode -X)",
+      "Bash(mvn clean deploy -N -Prelease --batch-mode)",
+      "Bash(mvn clean deploy -pl v1-client --batch-mode)",
+      "Bash(for module in v2-client v3-client v4-client v5-client with-bugs-client)",
+      "Bash(do)",
+      "Bash(done)",
+      "Bash(do echo \"=== Deploying $module ===\" mvn clean deploy -pl $module --batch-mode)",
+      "Bash(mvn clean deploy -pl v2-client,v3-client,v4-client,v5-client,with-bugs-client --batch-mode)",
+      "Bash(git checkout v2-client/pom.xml v3-client/pom.xml v4-client/pom.xml v5-client/pom.xml with-bugs-client/pom.xml)",
+      "Bash(mvn clean deploy -pl v2-client --batch-mode)",
+      "Bash(mvn clean deploy -pl v3-client --batch-mode)",
+      "Bash(mvn clean deploy -pl v4-client --batch-mode)",
+      "Bash(mvn clean deploy -pl v5-client --batch-mode)",
+      "Bash(mvn clean deploy -pl with-bugs-client --batch-mode)",
+      "Bash(mvn clean install -DskipTests --batch-mode)",
+      "Bash(mvn versions:set -DnewVersion=0.0.66-SNAPSHOT)"
+    ],
+    "deny": [],
+    "ask": []
+  }
+}

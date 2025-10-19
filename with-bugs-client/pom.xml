@@ -4,12 +4,38 @@
     <parent>
         <groupId>io.testsmith.practicesoftwaretesting</groupId>
         <artifactId>api-client</artifactId>
-        <version>0.0.64-SNAPSHOT</version>
+        <version>0.0.66-SNAPSHOT</version>
     </parent>
 
     <artifactId>with-bugs-client</artifactId>
-    <version>0.0.64-SNAPSHOT</version>
     <packaging>jar</packaging>
+
+    <name>Practice Software Testing Java Client - With Bugs</name>
+    <description>OpenAPI-generated Java client for Practice Software Testing API with bugs</description>
+    <url>https://github.com/testsmith-io/practice-software-testing-java-client</url>
+
+    <licenses>
+        <license>
+            <name>The GNU General Public License 3.0</name>
+            <url>https://www.gnu.org/licenses/gpl-3.0.html</url>
+        </license>
+    </licenses>
+
+    <developers>
+        <developer>
+            <name>Roy de Kleijn</name>
+            <email>info@testsmith.io</email>
+            <organization>Testsmith</organization>
+            <organizationUrl>https://testsmith.io</organizationUrl>
+        </developer>
+    </developers>
+
+    <scm>
+        <connection>scm:git:git@github.com:testsmith-io/practice-software-testing-java-client.git</connection>
+        <developerConnection>scm:git:git@github.com:testsmith-io/practice-software-testing-java-client.git</developerConnection>
+        <url>https://github.com/testsmith-io/practice-software-testing-java-client</url>
+        <tag>v0.0.65</tag>
+    </scm>
 
     <properties>
         <maven.deploy.skip>false</maven.deploy.skip>
@@ -125,17 +151,55 @@
             </plugin>
 
             <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-source-plugin</artifactId>
+                <version>3.3.0</version>
+                <executions>
+                    <execution>
+                        <id>attach-sources</id>
+                        <goals>
+                            <goal>jar-no-fork</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-javadoc-plugin</artifactId>
+                <version>3.6.0</version>
+                <executions>
+                    <execution>
+                        <id>attach-javadocs</id>
+                        <goals>
+                            <goal>jar</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-gpg-plugin</artifactId>
+                <version>3.1.0</version>
+                <executions>
+                    <execution>
+                        <id>sign-artifacts</id>
+                        <phase>verify</phase>
+                        <goals>
+                            <goal>sign</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+            <plugin>
                 <groupId>org.sonatype.central</groupId>
                 <artifactId>central-publishing-maven-plugin</artifactId>
+                <extensions>true</extensions>
                 <configuration>
-                    <skip>true</skip>
+                    <publishingServerId>central</publishingServerId>
+                    <autoPublish>true</autoPublish>
                 </configuration>
             </plugin>
 
         </plugins>
     </build>
-
-  <scm>
-    <tag>api-client-0.0.53</tag>
-  </scm>
 </project>
