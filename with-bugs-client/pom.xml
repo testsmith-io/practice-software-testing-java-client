@@ -4,11 +4,11 @@
     <parent>
         <groupId>io.testsmith.practicesoftwaretesting</groupId>
         <artifactId>api-client</artifactId>
-        <version>0.0.64-SNAPSHOT</version>
+        <version>0.0.64</version>
     </parent>
 
     <artifactId>with-bugs-client</artifactId>
-    <version>0.0.64-SNAPSHOT</version>
+    <version>0.0.64</version>
     <packaging>jar</packaging>
 
     <properties>
@@ -136,6 +136,6 @@
     </build>
 
   <scm>
-    <tag>api-client-0.0.53</tag>
+    <tag>v0.0.64</tag>
   </scm>
 </project>
