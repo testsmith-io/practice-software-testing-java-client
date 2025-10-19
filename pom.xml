@@ -3,7 +3,7 @@
 
   <groupId>io.testsmith.practicesoftwaretesting</groupId>
   <artifactId>api-client</artifactId>
-  <version>0.0.53</version>
+  <version>0.0.54-SNAPSHOT</version>
   <packaging>pom</packaging>
 
   <properties>
