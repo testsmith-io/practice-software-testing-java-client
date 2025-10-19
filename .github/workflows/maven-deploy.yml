@@ -10,8 +10,8 @@ jobs:
     
     # Set environment variables for entire job
     env:
-      CENTRAL_TOKEN_USERNAME: ${{ secrets.CENTRAL_TOKEN_USERNAME }}
-      CENTRAL_TOKEN_PASSWORD: ${{ secrets.CENTRAL_TOKEN_PASSWORD }}
+      CENTRAL_TOKEN_USERNAME: ${{ secrets.OSSRH_USERNAME }}
+      CENTRAL_TOKEN_PASSWORD: ${{ secrets.OSSRH_PASSWORD }}
       MAVEN_GPG_PASSPHRASE: ${{ secrets.MAVEN_GPG_PASSPHRASE }}
     
     steps:
